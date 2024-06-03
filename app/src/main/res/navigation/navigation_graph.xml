@@ -91,9 +91,4 @@
             app:popExitAnim="@anim/slide_out_right"
             />
     </fragment>
-    <fragment
-        android:id="@+id/teamFragment"
-        android:name="ru.practicum.android.diploma.team.ui.TeamFragment"
-        android:label="fragment_team"
-        tools:layout="@layout/fragment_team" />
 </navigation>

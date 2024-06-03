@@ -160,10 +160,17 @@ class SettingFiltersFragment : BindingFragment<FragmentSettingFiltersBinding>() 
         binding.placeOfWorkButton.setOnClickListener {
             findNavController().navigate(R.id.action_settingFilters_to_fragmentPlaceOfWork)
         }
+        binding.placeOfWorkEditText.setOnClickListener {
+            findNavController().navigate(R.id.action_settingFilters_to_fragmentPlaceOfWork)
+        }
     }
 
     fun switchToIndustriesScreen() {
         binding.industryButton.setOnClickListener {
+            bundle = bundleOf(SCREEN to INDUSTRIES)
+            findNavController().navigate(R.id.action_settingFilters_to_fragmentChooseFilter, bundle)
+        }
+        binding.industryEditText.setOnClickListener {
             bundle = bundleOf(SCREEN to INDUSTRIES)
             findNavController().navigate(R.id.action_settingFilters_to_fragmentChooseFilter, bundle)
         }
