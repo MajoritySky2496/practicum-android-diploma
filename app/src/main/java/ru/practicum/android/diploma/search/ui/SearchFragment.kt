@@ -156,17 +156,26 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>() {
     }
 
     private fun showVacanciesList(vacancies: List<Vacancy>, foundValue: Int) {
+        if(vacancies.isEmpty()){
+            binding.searchResult.visibility = View.GONE
+            binding.searchRecyclerView.visibility = View.GONE
+            binding.placeholderImage.visibility = View.VISIBLE
+            binding.progressBarForLoad.visibility = View.GONE
+            binding.progressBarInEnd.visibility = View.GONE
+        }else{
+            binding.searchResult.visibility = View.VISIBLE
+            binding.searchResult.text =
+                resources.getQuantityString(R.plurals.search_result_number, foundValue, foundValue)
+            binding.searchRecyclerView.visibility = View.VISIBLE
+            binding.placeholderImage.visibility = View.GONE
+            binding.progressBarForLoad.visibility = View.GONE
+            binding.progressBarInEnd.visibility = View.GONE
 
-        binding.searchResult.visibility = View.VISIBLE
-        binding.searchResult.text =
-            resources.getQuantityString(R.plurals.search_result_number, foundValue, foundValue)
-        binding.searchRecyclerView.visibility = View.VISIBLE
-        binding.placeholderImage.visibility = View.GONE
-        binding.progressBarForLoad.visibility = View.GONE
-        binding.progressBarInEnd.visibility = View.GONE
+            hideKeyBoard()
+            adapter.setVacancies(vacancies)
+        }
 
-        hideKeyBoard()
-        adapter.setVacancies(vacancies)
+
     }
 
     private fun showError(errorMessage: String) {
@@ -267,6 +276,7 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>() {
     }
 
     private fun clearInputEditText() {
+        viewModel.clearVacancyList()
         binding.searchEditText.text.clear()
         binding.searchEditText.clearFocus()
         viewModel.clearInputEditText()

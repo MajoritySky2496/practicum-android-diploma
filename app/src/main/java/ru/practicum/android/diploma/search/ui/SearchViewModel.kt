@@ -197,6 +197,16 @@ class SearchViewModel(
         _saveTextLiveData.postValue(saveText)
         getFilters(filters)
     }
+    fun clearVacancyList() {
+        vacanciesList.clear()
+        _viewStateLiveData.postValue(
+            SearchState.VacancyContent(
+                vacancies = vacanciesList,
+                foundValue = 0
+            )
+        )
+    }
+
 
     fun showFiltersState() {
         getFiltersFromJson()
