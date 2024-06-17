@@ -58,7 +58,21 @@ class PlaceOfWorkFragment : BindingFragment<FragmentPlaceOfWorkBinding>() {
                 bundle
             )
         }
+        binding.countryEditText.setOnClickListener {
+            bundle = bundleOf(SettingFiltersFragment.SCREEN to SettingFiltersFragment.COUNTRIES)
+            findNavController().navigate(
+                R.id.action_fragmentPlaceOfWork_to_fragmentChooseFilter,
+                bundle
+            )
+        }
         binding.regionButton.setOnClickListener {
+            bundle = bundleOf(SCREEN to REGION)
+            findNavController().navigate(
+                R.id.action_fragmentPlaceOfWork_to_fragmentChooseFilter,
+                bundle
+            )
+        }
+        binding.regionEditText.setOnClickListener {
             bundle = bundleOf(SCREEN to REGION)
             findNavController().navigate(
                 R.id.action_fragmentPlaceOfWork_to_fragmentChooseFilter,
